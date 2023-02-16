@@ -1,31 +1,28 @@
-//this is going to be a functional component
-//we are going to use tailwind css to style this component
-//i want a sticky navbar at the top of the page with
-//the navbar will recibe ass props the buttons of the page such as home, about, contact, etc
-//i want the navbar to be responsive and the logo to be on the left side of the navbar and the buttons on the right side of the navbar
 'use client';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
-import useDarkSide from '../hooks/useDarkSide';
+
 //the props of the page will be the buttons of the page
 
 type Buttons = string[];
 
 const Navbar: React.FC<{ buttons: Buttons }> = ({ buttons }) => {
-  if (typeof window !== 'undefined') {
-    // Perform localStorage action
-    const item = localStorage.getItem('key');
-  }
   const [open, setOpen] = useState(false);
-  const [colorTheme, setTheme]: any = useDarkSide();
-  const [darkSide, setDarkSide] = useState(
-    colorTheme === 'light' ? true : false
-  );
-  const toggleDarkMode = (checked: boolean) => {
-    setDarkSide(checked);
-    setTheme(colorTheme);
+  const [darkSide, setDarkSide] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkSide(!darkSide);
   };
+
+  useEffect(() => {
+    if (darkSide) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkSide]);
+
   return (
     <nav
       className={`w-full  fixed flex lg:flex-row flex-col items-center shadow-lg h-auto  justify-center bg-white dark:bg-[#0F0F0F] dark:text-white z-10  opacity-[0.95]`}
