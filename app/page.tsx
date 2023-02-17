@@ -7,8 +7,8 @@ const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
   return (
-    <main className={styles.main}>
+    <div className="bg-gray-100 dark:bg-gray-900">
       <Start />
-    </main>
+    </div>
   );
 }
