@@ -1,21 +1,30 @@
 import { useState } from 'react';
+import '../resources/images/PaginaWeb.png';
 
+import { Asap_Condensed } from '@next/font/google';
+const image1 = '../resources/images/PaginaWeb.png';
 const spaceData = [
   {
     name: 'Pagina web',
-    image: 'https://source.unsplash.com/random/800x600',
+    image: 'https://source.unsplash.com/random/600x400',
     content:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
   },
   {
     name: 'Comercio electronico',
-    image: 'https://source.unsplash.com/random/800x600',
+    image: 'https://source.unsplash.com/random/600x400',
     content:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
   },
   {
     name: 'Aplicaciones moviles',
-    image: 'https://source.unsplash.com/random/800x600',
+    image: 'https://source.unsplash.com/random/600x400',
+    content:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
+  },
+  {
+    name: 'otro',
+    image: 'https://source.unsplash.com/random/600x400',
     content:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
   },
@@ -36,12 +45,12 @@ const Services = () => {
         NUESTROS SERVICIOS
       </h1>
       <div className="flex flex-wrap justify-center items-center">
-        <div className="w-full lg:w-1/4 lg:px-12 mb-12 lg:mb-0">
-          <ul className="space-y-12">
+        <div className="w-full lg:w-1/4 lg:px-2 mb-8 lg:mb-0">
+          <ul className="space-y-6">
             {spaceData.map((space) => (
               <li
                 key={space.name}
-                className={`cursor-pointer py-12 px-6 rounded-lg ${
+                className={`cursor-pointer py-4 px-6 rounded-lg ${
                   activeSpace === space.name
                     ? 'dark:bg-[rgba(44,44,44)] bg-blue-700 text-white'
                     : 'bg-white dark:bg-[rgba(22,22,22)] text-gray-700 dark:text-white'
@@ -49,17 +58,17 @@ const Services = () => {
                 onClick={() => handleSpaceClick(space.name)}
               >
                 <h2 className="font-bold text-2xl mb-2">{space.name}</h2>
-                <p className="text-xl">{space.content}</p>
+                <p className="text-base">{space.content}</p>
               </li>
             ))}
           </ul>
         </div>
-        <div className="w-full lg:w-[60%]">
-          <div className="bg-gray-200 rounded-lg overflow-hidden">
+        <div className="w-full lg:w-[60%] lg:px-12 flex justify-center items-center rounded-xl">
+          <div className="bg-gray-200 h-[400px] lg:h-[600px] rounded-xl flex justify-center items-center max-w-[800px] max-h-[600px]">
             <img
               src={activeSpaceData?.image}
               alt=""
-              className="w-full h-full object-cover"
+              className="object-cover w-full h-full rounded-xl"
             />
           </div>
         </div>

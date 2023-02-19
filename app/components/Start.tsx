@@ -9,7 +9,7 @@ const buttons = ['Home', 'About', 'Contact'];
 
 const Start: React.FC = () => {
   return (
-    <div className="w-screensds h-screen bg-white dark:bg-[#0F0F0F] dark:text-white ">
+    <div className="w-screensds h-full bg-white dark:bg-[#0F0F0F] dark:text-white ">
       <Navbar buttons={buttons} />
       <Hero />
       <Iconslider />

@@ -23,7 +23,7 @@ export default class Iconslider extends Component {
             dots: false,
             infinite: true,
             slidesToShow: 5,
-            slidesToScroll: 1,
+            slidesToScroll: 5,
             autoplay: true,
             speed: 5000,
             autoplaySpeed: 0,
