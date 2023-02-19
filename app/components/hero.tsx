@@ -6,7 +6,7 @@ const Hero: React.FC = () => {
           <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white ">
             NODEV SOFTWARE SOLUTIONS
           </h1>
-          <p className="max-w-2xl mb-6 font-light text-gray-900 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+          <p className="max-w-2xl mb-6 font-light text-gray-900 lg:mb-8 md:text-lg lg:text-2xl dark:text-gray-100">
             Somos uns empresa joven nacida en Aguascalientes, México, con el
             objetivo de brindar soluciones de software e innovacion a nuestros
             clientes. Creada por un grupo de alumnos de la Universidad Autónoma
