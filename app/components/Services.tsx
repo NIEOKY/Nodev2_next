@@ -52,9 +52,9 @@ const Services = () => {
                 key={space.name}
                 className={`cursor-pointer py-4 px-6 rounded-lg ${
                   activeSpace === space.name
-                    ? 'dark:bg-[rgba(44,44,44)] bg-blue-700 text-white'
-                    : 'bg-white dark:bg-[rgba(22,22,22)] text-gray-700 dark:text-white'
-                } hover:bg-blue-700 hover:text-white transition-colors duration-300 dark:hover:bg-[#1e1e1e]`}
+                    ? 'dark:bg-[rgba(44,44,44)] bg-[rgba(230,230,230)] text-black dark:text-white'
+                    : 'bg-white dark:bg-[rgba(22,22,22)] text-black dark:text-white'
+                } hover:bg-[rgba(240,240,240)] dark:hover:text-white transition-colors duration-300 dark:hover:bg-[#1e1e1e]`}
                 onClick={() => handleSpaceClick(space.name)}
               >
                 <h2 className="font-bold text-2xl mb-2">{space.name}</h2>
