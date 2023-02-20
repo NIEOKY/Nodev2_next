@@ -4,17 +4,21 @@ import Navbar from '@/app/components/Navbar';
 import Iconslider from '@/app/components/Iconslider';
 import AccordionP from '@/app/components/AccordionP';
 import Services from './Services';
+import TeamCarousel from './Team';
+import Contact from './Contact';
 
 const buttons = ['Home', 'About', 'Contact'];
 
 const Start: React.FC = () => {
   return (
-    <div className="w-screensds h-full bg-white dark:bg-[#0F0F0F] dark:text-white ">
+    <div className="w-screensds h-full bg-white dark:bg-[#161616] dark:text-white ">
       <Navbar buttons={buttons} />
       <Hero />
       <Iconslider />
       <AccordionP />
       <Services />
+      <TeamCarousel />
+      <Contact />
     </div>
   );
 };
