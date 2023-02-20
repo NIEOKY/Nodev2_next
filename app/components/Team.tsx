@@ -65,6 +65,13 @@ const TeamCarousel = () => {
     nextArrow: <SlickArrowRight onClick={() => {}} />,
     responsive: [
       {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          centerMode: false,
+        },
+      },
+      {
         breakpoint: 768,
         settings: {
           slidesToShow: 1,
@@ -75,7 +82,7 @@ const TeamCarousel = () => {
   };
 
   return (
-    <div className="m-24  bg-white dark:bg-[#161616] dark:text-white">
+    <div className="md:m-24 m-12 bg-white dark:bg-[#161616] dark:text-white">
       <h1 className="text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white flex items-center justify-center mb-16 text-center">
         NUESTRO EQUIPO
       </h1>
@@ -86,7 +93,7 @@ const TeamCarousel = () => {
               key={person.name}
               className=" transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110 my-20"
             >
-              <div className="w-48 h-48 rounded-full overflow-hidden mx-auto mb-4 ">
+              <div className="w-48 h-48 rounded-full overflow-hidden mx-auto mb-4">
                 <img
                   src={person.image}
                   alt={person.name}
