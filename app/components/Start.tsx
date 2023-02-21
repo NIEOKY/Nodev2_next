@@ -7,12 +7,10 @@ import Services from './Services';
 import TeamCarousel from './Team';
 import Contact from './Contact';
 
-const buttons = ['Home', 'About', 'Contact'];
-
 const Start: React.FC = () => {
   return (
     <div className="w-screensds h-full bg-white dark:bg-[#161616] dark:text-white ">
-      <Navbar buttons={buttons} />
+      <Navbar />
       <Hero />
       <Iconslider />
       <Services />
