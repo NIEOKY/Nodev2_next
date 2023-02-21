@@ -16,7 +16,7 @@ const team = [
   },
   {
     name: 'Jesus Alberto Gomez Hernandez',
-    role: 'Especialista en AI',
+    role: 'Especialista en Artificial Intelligence',
     image: 'jesus.jfif',
   },
   {
