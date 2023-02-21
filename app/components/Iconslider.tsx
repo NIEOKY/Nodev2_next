@@ -9,10 +9,10 @@ export default class Iconslider extends Component {
       dots: false,
       infinite: true,
       slidesToShow: 6,
-      slidesToScroll: 1,
+      slidesToScroll: 2,
       autoplay: true,
       speed: 5000,
-      autoplaySpeed: 0,
+      autoplaySpeed: 500,
       cssEase: 'linear',
       arrows: false,
 
@@ -99,7 +99,10 @@ export default class Iconslider extends Component {
     ];
 
     return (
-      <div className="lg:px-36 dark:bg-[#161616] bg-white py-12 ">
+      <div
+        className="lg:px-36 dark:bg-[#161616] bg-white py-12 "
+        id="iconslider"
+      >
         <h1 className="text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white flex items-center justify-center mb-16">
           TECNOLOGIAS
         </h1>

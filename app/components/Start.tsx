@@ -2,7 +2,7 @@
 import Hero from '@/app/components/hero';
 import Navbar from '@/app/components/Navbar';
 import Iconslider from '@/app/components/Iconslider';
-import AccordionP from '@/app/components/AccordionP';
+
 import Services from './Services';
 import TeamCarousel from './Team';
 import Contact from './Contact';
@@ -15,7 +15,6 @@ const Start: React.FC = () => {
       <Navbar buttons={buttons} />
       <Hero />
       <Iconslider />
-      <AccordionP />
       <Services />
       <TeamCarousel />
       <Contact />

@@ -5,9 +5,22 @@ import { DarkModeSwitch } from 'react-toggle-dark-mode';
 
 //the props of the page will be the buttons of the page
 
-type Buttons = string[];
+const buttons = [
+  {
+    name: 'Home',
+    ref: 'hero',
+  },
+  {
+    name: 'About',
+    ref: 'services',
+  },
+  {
+    name: 'contact',
+    ref: 'contact',
+  },
+];
 
-const Navbar: React.FC<{ buttons: Buttons }> = ({ buttons }) => {
+const Navbar: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [darkSide, setDarkSide] = useState(false);
 
@@ -23,9 +36,21 @@ const Navbar: React.FC<{ buttons: Buttons }> = ({ buttons }) => {
     }
   }, [darkSide]);
 
+  const handleClickScroll = (section: string) => {
+    const element = document.getElementById(section);
+    if (element) {
+      // 👇 Will scroll smoothly to the top of the next section
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    if (open) {
+      setOpen(!open);
+    }
+  };
+
   return (
     <nav
       className={`w-full  fixed flex lg:flex-row flex-col items-center shadow-lg h-auto  justify-center bg-white dark:bg-[#0F0F0F] dark:text-white z-10  opacity-[0.95]`}
+      id="navbar"
     >
       <div className="flex items-center flex-shrink-0  mr-6 h-20 pl-6">
         <a className="font-semibold text-4xl tracking-tight " href="">
@@ -64,12 +89,11 @@ const Navbar: React.FC<{ buttons: Buttons }> = ({ buttons }) => {
         <div className=" lg:p-0 lg:pt-1 lg- p-8 lg:flex w-full lg:flex-row  lg:justify-end  ">
           {buttons.map((button) => (
             <a
-              key={button}
-              href={`#${button}`}
-              className="block mt-4 lg:inline-block lg:mt-0  mr-4 text-xl px-10"
-              onClick={() => setOpen(false)}
+              key={button.name}
+              className="block mt-4 lg:inline-block lg:mt-0  mr-4 text-xl px-10 hover:cursor-pointer"
+              onClick={() => handleClickScroll(button.ref)}
             >
-              {button}
+              {button.name}
             </a>
           ))}
         </div>
@@ -87,5 +111,3 @@ const Navbar: React.FC<{ buttons: Buttons }> = ({ buttons }) => {
 };
 
 export default Navbar;
-
-export type { Buttons };

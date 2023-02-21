@@ -5,29 +5,29 @@ import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 const team = [
   {
-    name: 'Persona 1',
-    role: 'Especialista en X',
-    image: 'https://source.unsplash.com/random/600x400',
+    name: 'Orlando Xavier López Guerrero',
+    role: 'Especialista en Frontend',
+    image: 'orlando.jfif',
   },
   {
-    name: 'Persona 2',
-    role: 'Especialista en Y',
-    image: 'https://source.unsplash.com/random/600x400',
+    name: 'Tomas Alejandro Ramírez Díaz',
+    role: 'Especialista en Backend',
+    image: 'tomy.jpeg',
   },
   {
-    name: 'Persona 3',
-    role: 'Especialista en Z',
-    image: 'https://source.unsplash.com/random/600x400',
+    name: 'Jesus Alberto Gomez Hernandez',
+    role: 'Especialista en Backend',
+    image: 'jesus.jfif',
   },
   {
-    name: 'Persona 4',
-    role: 'Especialista en A',
-    image: 'https://source.unsplash.com/random/600x400',
+    name: 'Antonio Muñoz Barrientos',
+    role: 'Especialista en Data analytics',
+    image: '/antos.png',
   },
   {
-    name: 'Persona 5',
-    role: 'Especialista en B',
-    image: 'https://source.unsplash.com/random/600x400',
+    name: 'Alan Alberto Montes Perez',
+    role: 'Especialista en Frontend',
+    image: 'alan.jpg',
   },
 ];
 
@@ -82,7 +82,10 @@ const TeamCarousel = () => {
   };
 
   return (
-    <div className="md:m-24 m-12 bg-white dark:bg-[#161616] dark:text-white">
+    <div
+      className="md:m-24 m-12 bg-white dark:bg-[#161616] dark:text-white"
+      id="team"
+    >
       <h1 className="text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white flex items-center justify-center mb-16 text-center">
         NUESTRO EQUIPO
       </h1>

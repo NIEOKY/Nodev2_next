@@ -40,7 +40,10 @@ const Services = () => {
   const activeSpaceData = spaceData.find((space) => space.name === activeSpace);
 
   return (
-    <div className="dark:bg-[#161616] bg-white p-4 flex flex-col items-center ">
+    <div
+      className="dark:bg-[#161616] bg-white p-4 flex flex-col items-center "
+      id="services"
+    >
       <h1 className="text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white flex items-center justify-center mb-16 text-center">
         NUESTROS SERVICIOS
       </h1>

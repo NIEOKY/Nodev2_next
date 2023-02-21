@@ -14,7 +14,10 @@ const Contact = () => {
   };
 
   return (
-    <div className="bg-white dark:bg-[#161616] p-4 flex flex-col items-center">
+    <div
+      className="bg-white dark:bg-[#161616] p-4 flex flex-col items-center"
+      id="contact"
+    >
       <h1 className="text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white flex items-center justify-center mb-16 text-center">
         CONTACTO
       </h1>
