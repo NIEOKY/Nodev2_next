@@ -23,7 +23,7 @@ const spaceData = [
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
   },
   {
-    name: 'otro',
+    name: 'Punto de venta',
     image: 'https://source.unsplash.com/random/600x400',
     content:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',

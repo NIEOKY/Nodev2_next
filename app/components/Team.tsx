@@ -5,28 +5,28 @@ import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 const team = [
   {
-    name: 'Orlando Xavier López Guerrero',
-    role: 'Especialista en Frontend',
+    name: 'Orlando López ',
+    role: 'Full Stack Developer',
     image: 'orlando.jfif',
   },
   {
-    name: 'Tomas Alejandro Ramírez Díaz',
-    role: 'Especialista en Backend',
+    name: 'Tomas Ramírez',
+    role: 'Backend Developer',
     image: 'tomy.jpeg',
   },
   {
-    name: 'Jesus Alberto Gomez Hernandez',
+    name: 'Jesus Gomez ',
     role: 'Especialista en Artificial Intelligence',
     image: 'jesus.jfif',
   },
   {
-    name: 'Antonio Muñoz Barrientos',
+    name: 'Antonio Muñoz',
     role: 'Especialista en Data analytics',
-    image: '/antos.png',
+    image: 'anto.jpg',
   },
   {
-    name: 'Alan Alberto Montes Perez',
-    role: 'Especialista en Frontend',
+    name: 'Alan Montes',
+    role: 'Especialista en Redes',
     image: 'alan.jpg',
   },
 ];
