@@ -15,7 +15,7 @@ const Contact = () => {
 
   return (
     <div
-      className="bg-gray-300 dark:bg-[#0C0C0C] p-4 flex flex-col items-center"
+      className="bg-[#f5f5f7] dark:bg-[#0C0C0C] p-4 flex flex-col items-center"
       id="contact"
     >
       <h1 className="text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white flex items-center justify-center mb-16 text-center">
@@ -64,7 +64,7 @@ const Contact = () => {
                   id="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full p-2 border rounded-lg bg-gray-200 dark:bg-gray-100 text-black "
+                  className="w-full p-2 border rounded-lg bg-white dark:bg-gray-100 text-black border-gray-400"
                   required
                 />
               </div>
@@ -80,7 +80,7 @@ const Contact = () => {
                   id="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full p-2 border rounded-lg bg-gray-200 dark:bg-gray-100 text-black"
+                  className="w-full p-2 border rounded-lg bg-white dark:bg-gray-100 text-black border-gray-400"
                   required
                 />
               </div>
@@ -95,7 +95,7 @@ const Contact = () => {
                   id="message"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  className="w-full p-2 border rounded-lg bg-gray-200 dark:bg-gray-100 text-black"
+                  className="w-full p-2 border rounded-lg bg-white dark:bg-gray-100 text-black border-gray-400 resize-none h-[150px]"
                   required
                 />
               </div>

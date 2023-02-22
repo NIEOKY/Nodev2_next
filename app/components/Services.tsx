@@ -6,13 +6,13 @@ const image1 = '../resources/images/PaginaWeb.png';
 const spaceData = [
   {
     name: 'Pagina web',
-    image: 'https://source.unsplash.com/random/600x400',
+    image: 'paginaweb.png',
     content:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
   },
   {
     name: 'Comercio electronico',
-    image: 'https://source.unsplash.com/random/600x400',
+    image: 'comercio.png',
     content:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
   },
@@ -67,12 +67,14 @@ const Services = () => {
           </ul>
         </div>
         <div className="w-full lg:w-[60%] lg:px-12 flex justify-center items-center rounded-xl">
-          <div className="bg-gray-200 h-[400px] lg:h-[600px] rounded-xl flex justify-center items-center max-w-[800px] max-h-[600px]">
-            <img
-              src={activeSpaceData?.image}
-              alt=""
-              className="object-cover w-full h-full rounded-xl"
-            />
+          <div className=" h-[400px] lg:h-[600px] rounded-xl flex justify-center items-center max-w-[800px] max-h-[600px]">
+            <div>
+              <img
+                src={activeSpaceData?.image}
+                alt=""
+                className="object-contain w-full h-full rounded-xl border-2 border-gray-800 dark:border-white"
+              />
+            </div>
           </div>
         </div>
       </div>
