@@ -8,25 +8,25 @@ const spaceData = [
     name: 'Pagina web',
     image: 'paginaweb.png',
     content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
+      'Crea una presencia en línea para tu negocio con una página web moderna y profesional.',
   },
   {
     name: 'Comercio electronico',
     image: 'comercio.png',
     content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
+      'Vende tus productos en línea con una tienda en línea atractiva y fácil de usar que aumentará tus ventas.',
   },
   {
     name: 'Aplicaciones moviles',
     image: 'https://source.unsplash.com/random/600x400',
     content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
+      'Haz crecer tu negocio y llega a más clientes con una aplicación móvil que les permita acceder a tus productos y servicios desde cualquier lugar.',
   },
   {
     name: 'Punto de ventas',
     image: 'https://source.unsplash.com/random/600x400',
     content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
+      'Gestiona y administra tu negocio de manera más eficiente con un sistema de punto de venta que te ayudará a aumentar tus ventas y a simplificar tus operaciones diarias.',
   },
 ];
 
@@ -67,12 +67,12 @@ const Services = () => {
           </ul>
         </div>
         <div className="w-full lg:w-[60%] lg:px-12 flex justify-center items-center rounded-xl">
-          <div className=" h-[400px] lg:h-[600px] rounded-xl flex justify-center items-center max-w-[800px] max-h-[600px]">
-            <div>
+          <div className="aspect-w-4 aspect-h-3 lg:aspect-w-16 lg:aspect-h-9 rounded-xl flex justify-center items-center max-w-[800px]">
+            <div className="min-w-[300px] min-h-[225px] lg:min-w-[800px] lg:min-h-[450px]">
               <img
                 src={activeSpaceData?.image}
                 alt=""
-                className="object-contain w-full h-full rounded-xl border-2 border-gray-800 dark:border-white"
+                className="object-cover w-full h-full rounded-xl shadow-2xl transform lg:hover:scale-110 transition-transform duration-300"
               />
             </div>
           </div>
