@@ -18,13 +18,13 @@ const spaceData = [
   },
   {
     name: 'Aplicaciones moviles',
-    image: 'https://source.unsplash.com/random/600x400',
+    image: 'movileapp.png',
     content:
       'Haz crecer tu negocio y llega a más clientes con una aplicación móvil que les permita acceder a tus productos y servicios desde cualquier lugar.',
   },
   {
     name: 'Punto de ventas',
-    image: 'https://source.unsplash.com/random/600x400',
+    image: 'movileapp.png',
     content:
       'Gestiona y administra tu negocio de manera más eficiente con un sistema de punto de venta que te ayudará a aumentar tus ventas y a simplificar tus operaciones diarias.',
   },
@@ -67,14 +67,12 @@ const Services = () => {
           </ul>
         </div>
         <div className="w-full lg:w-[60%] lg:px-12 flex justify-center items-center rounded-xl">
-          <div className="aspect-w-4 aspect-h-3 lg:aspect-w-16 lg:aspect-h-9 rounded-xl flex justify-center items-center max-w-[800px]">
-            <div className="min-w-[300px] min-h-[225px] lg:min-w-[800px] lg:min-h-[450px]">
-              <img
-                src={activeSpaceData?.image}
-                alt=""
-                className="object-cover w-full h-full rounded-xl shadow-2xl transform lg:hover:scale-110 transition-transform duration-300"
-              />
-            </div>
+          <div className="aspect-w-4 aspect-h-3 lg:aspect-w-16 lg:aspect-h-9 rounded-xl max-w-[800px] max-h-[600px] ">
+            <img
+              src={activeSpaceData?.image}
+              alt=""
+              className="rounded-xl shadow-2xl transform lg:hover:scale-110 transition-transform duration-300 "
+            />
           </div>
         </div>
       </div>
