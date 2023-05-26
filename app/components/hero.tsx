@@ -1,3 +1,6 @@
+import animationData from '../resources/phone.json';
+import Lottie from 'lottie-react';
+
 const Hero: React.FC = () => {
   return (
     <div className="bg-white dark:bg-[#161616] z-0 realtive pt-32  " id="hero">
@@ -33,10 +36,11 @@ const Hero: React.FC = () => {
           </a>
         </div>
         <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
-          <img
+          <Lottie animationData={animationData} />
+          {/* <img
             src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/phone-mockup.png"
             alt="mockup"
-          />
+          /> */}
         </div>
       </div>
     </div>
