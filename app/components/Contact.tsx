@@ -1,7 +1,10 @@
+import React from 'react';
 import { useState } from 'react';
 import { HiOutlineMail } from 'react-icons/hi';
 import { MdLocationOn } from 'react-icons/md';
 import { FiPhone } from 'react-icons/fi';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Contact = () => {
   const [name, setName] = useState('');
@@ -10,7 +13,33 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(`Name: ${name}\nEmail: ${email}\nMessage: ${message}`);
+    const response = fetch('/api/email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        message,
+      }),
+    });
+    response.then((res) => {
+      if (res.status === 200) {
+        toast.success('Mensaje enviado', {
+          position: toast.POSITION.BOTTOM_RIGHT,
+          className: 'foo-bar'
+        });
+        setEmail("");
+        setMessage("");
+        setName("");
+      } else {
+        toast.error('Error al enviar el mensaje',{
+          position: toast.POSITION.BOTTOM_RIGHT
+        });
+      }
+    }
+    );
   };
 
   return (
@@ -18,6 +47,7 @@ const Contact = () => {
       className="bg-[#f5f5f7] dark:bg-[#0C0C0C] p-4 flex flex-col items-center"
       id="contact"
     >
+      <ToastContainer />
       <h1 className="text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white flex items-center justify-center mb-16 text-center">
         CONTACTO
       </h1>

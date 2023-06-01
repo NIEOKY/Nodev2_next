@@ -2,6 +2,14 @@ import animationData from '../resources/phone.json';
 import Lottie from 'lottie-react';
 
 const Hero: React.FC = () => {
+  const handleClickScroll = (section: string) => {
+    const element = document.getElementById(section);
+    if (element) {
+      // 👇 Will scroll smoothly to the top of the next section
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+   
+  };
   return (
     <div className="bg-white dark:bg-[#161616] z-0 realtive pt-32  " id="hero">
       <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
@@ -16,8 +24,8 @@ const Hero: React.FC = () => {
             de Aguascalientes con extensos conocimientos en diversas
             tecnologías.
           </p>
-          <a
-            href="#"
+          <button
+            onClick={() => handleClickScroll('contact')}
             className=" inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-black rounded-lg bg-gray-100 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900 dark:text-black "
           >
             Contactanos
@@ -33,7 +41,7 @@ const Hero: React.FC = () => {
                 clipRule="evenodd"
               ></path>
             </svg>
-          </a>
+          </button>
         </div>
         <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
           <Lottie animationData={animationData} />

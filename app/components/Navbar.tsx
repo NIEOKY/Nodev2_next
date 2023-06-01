@@ -7,15 +7,15 @@ import { DarkModeSwitch } from 'react-toggle-dark-mode';
 
 const buttons = [
   {
-    name: 'Home',
+    name: 'Inicio',
     ref: 'hero',
   },
   {
-    name: 'About',
+    name: 'Acerca de',
     ref: 'services',
   },
   {
-    name: 'contact',
+    name: 'Contacto',
     ref: 'contact',
   },
 ];

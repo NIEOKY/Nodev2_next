@@ -5,23 +5,23 @@ import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 const team = [
   {
-    name: 'Orlando López ',
-    role: 'Full Stack Developer',
+    name: 'Orlando López',
+    role: 'Desarrollador Full Stack',
     image: 'orlando.jfif',
   },
   {
     name: 'Tomas Ramírez',
-    role: 'Backend Developer',
+    role: 'Desarrollador Backend',
     image: 'tomy.jpeg',
   },
   {
-    name: 'Jesus Gomez ',
-    role: 'Especialista en Artificial Intelligence',
+    name: 'Jesus Gomez',
+    role: 'Especialista en Inteligencia Artificial',
     image: 'jesus.jfif',
   },
   {
     name: 'Antonio Muñoz',
-    role: 'Especialista en Data analytics',
+    role: 'Especialista en Analisis de Datos',
     image: 'anto.jpg',
   },
   {
