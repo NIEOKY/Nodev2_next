@@ -1,91 +1,119 @@
-import React from 'react';
-import { useState } from 'react';
-import { HiOutlineMail } from 'react-icons/hi';
-import { MdLocationOn } from 'react-icons/md';
-import { FiPhone } from 'react-icons/fi';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+"use client";
 
-const Contact = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Mail, Phone, ArrowRight } from "lucide-react";
+import { toast } from "sonner";
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+export default function Contact() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const response = fetch('/api/email', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        name,
-        email,
-        message,
-      }),
-    });
-    response.then((res) => {
-      if (res.status === 200) {
-        toast.success('Mensaje enviado', {
-          position: toast.POSITION.BOTTOM_RIGHT,
-          className: 'foo-bar'
-        });
+    setLoading(true);
+
+    try {
+      const res = await fetch("/api/email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message }),
+      });
+
+      if (res.ok) {
+        toast.success("Mensaje enviado correctamente. Te contactaremos pronto.");
+        setName("");
         setEmail("");
         setMessage("");
-        setName("");
       } else {
-        toast.error('Error al enviar el mensaje',{
-          position: toast.POSITION.BOTTOM_RIGHT
-        });
+        toast.error("Error al enviar el mensaje. Intenta de nuevo.");
       }
+    } catch {
+      toast.error("Error de conexión. Verifica tu internet.");
+    } finally {
+      setLoading(false);
     }
-    );
   };
 
   return (
-    <div
-      className="bg-[#f5f5f7] dark:bg-[#0C0C0C] p-4 flex flex-col items-center"
-      id="contact"
+    <section
+      className="bg-background py-24 md:py-32 border-t border-white/10"
+      id="contacto"
     >
-      <ToastContainer />
-      <h1 className="text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white flex items-center justify-center mb-16 text-center">
-        CONTACTO
-      </h1>
-      <div className="w-full max-w-4xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="flex flex-col">
-            <h2 className="text-xl font-bold mb-4">Información de contacto</h2>
-            <div className="flex items-center mb-4">
-              <HiOutlineMail className="text-2xl mr-2" />
-              <a
-                href="mailto:info@tudominio.com"
-                className="text-lg hover:underline"
-              >
-                nodev.contacto@gmail.com
-              </a>
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="grid gap-12 lg:grid-cols-2">
+          {/* Left — Info */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="text-sm font-medium uppercase tracking-widest text-blue-400 mb-4">
+              Contacto
+            </p>
+            <h2 className="text-3xl font-bold sm:text-4xl md:text-5xl tracking-tight mb-6">
+              ¿Listo para transformar
+              <br />
+              <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
+                tu negocio con IA?
+              </span>
+            </h2>
+            <p className="text-muted-foreground text-lg leading-relaxed mb-10 max-w-md">
+              Agenda una consulta gratuita de 30 minutos. Analizaremos tu caso y
+              te mostraremos exactamente dónde la IA puede generar impacto
+              inmediato.
+            </p>
+
+            <div className="space-y-6">
+              <div className="flex items-center gap-4">
+                <div className="inline-flex rounded-xl bg-blue-500/10 p-3">
+                  <Mail className="size-5 text-blue-400" />
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground">Email</p>
+                  <a
+                    href="mailto:nodev.contacto@gmail.com"
+                    className="font-medium hover:text-blue-400 transition-colors"
+                  >
+                    nodev.contacto@gmail.com
+                  </a>
+                </div>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="inline-flex rounded-xl bg-blue-500/10 p-3">
+                  <Phone className="size-5 text-blue-400" />
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground">Teléfono</p>
+                  <a
+                    href="tel:+524492981061"
+                    className="font-medium hover:text-blue-400 transition-colors"
+                  >
+                    +52 449 298 10 61
+                  </a>
+                </div>
+              </div>
             </div>
-            {/*             
-            <div className="flex items-center mb-4">
-              <MdLocationOn className="text-2xl mr-2" />
-                <p className="text-lg">
-                  Dirección de la empresa, Calle 123, Ciudad, País
-                </p>
-              
-            </div> */}
-            <div className="flex items-center mb-4">
-              <FiPhone className="text-2xl mr-2" />
-              <a href="tel:+123456789" className="text-lg hover:underline">
-                +52 449 298 10 61
-              </a>
-            </div>
-          </div>
-          <div>
-            <h2 className="text-xl font-bold mb-4">Formulario de contacto</h2>
-            <form onSubmit={handleSubmit}>
-              <div className="mb-4">
+          </motion.div>
+
+          {/* Right — Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <form
+              onSubmit={handleSubmit}
+              className="rounded-2xl border border-white/10 bg-white/[0.03] p-8"
+            >
+              <div className="mb-6">
                 <label
                   htmlFor="name"
-                  className="block text-lg font-medium mb-2"
+                  className="block text-sm font-medium mb-2"
                 >
                   Nombre
                 </label>
@@ -94,14 +122,15 @@ const Contact = () => {
                   id="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full p-2 border rounded-lg bg-white dark:bg-gray-100 text-black border-gray-400"
+                  placeholder="Tu nombre completo"
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 outline-none transition-all"
                   required
                 />
               </div>
-              <div className="mb-4">
+              <div className="mb-6">
                 <label
                   htmlFor="email"
-                  className="block text-lg font-medium mb-2"
+                  className="block text-sm font-medium mb-2"
                 >
                   Correo electrónico
                 </label>
@@ -110,14 +139,15 @@ const Contact = () => {
                   id="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full p-2 border rounded-lg bg-white dark:bg-gray-100 text-black border-gray-400"
+                  placeholder="tu@empresa.com"
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 outline-none transition-all"
                   required
                 />
               </div>
-              <div className="mb-4">
+              <div className="mb-8">
                 <label
                   htmlFor="message"
-                  className="block text-lg font-medium mb-2 "
+                  className="block text-sm font-medium mb-2"
                 >
                   Mensaje
                 </label>
@@ -125,24 +155,30 @@ const Contact = () => {
                   id="message"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  className="w-full p-2 border rounded-lg bg-white dark:bg-gray-100 text-black border-gray-400 resize-none h-[150px]"
+                  placeholder="Cuéntanos sobre tu proyecto o necesidad..."
+                  rows={4}
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 outline-none transition-all resize-none"
                   required
                 />
               </div>
-              <div className="flex justify-end">
-                <button
-                  type="submit"
-                  className="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700"
-                >
-                  Enviar
-                </button>
-              </div>
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full bg-white text-black font-semibold py-3.5 px-8 rounded-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-white/10 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2"
+              >
+                {loading ? (
+                  "Enviando..."
+                ) : (
+                  <>
+                    Enviar mensaje
+                    <ArrowRight className="size-4" />
+                  </>
+                )}
+              </button>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
-    </div>
+    </section>
   );
-};
-
-export default Contact;
+}

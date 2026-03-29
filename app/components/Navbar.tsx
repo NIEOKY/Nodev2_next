@@ -1,113 +1,135 @@
-'use client';
-import { useEffect } from 'react';
-import { useState } from 'react';
-import { DarkModeSwitch } from 'react-toggle-dark-mode';
+"use client";
 
-//the props of the page will be the buttons of the page
+import React, { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-const buttons = [
-  {
-    name: 'Inicio',
-    ref: 'hero',
-  },
-  {
-    name: 'Acerca de',
-    ref: 'services',
-  },
-  {
-    name: 'Contacto',
-    ref: 'contact',
-  },
+const menuItems = [
+  { name: "Servicios", href: "#servicios" },
+  { name: "Casos de Éxito", href: "#casos" },
+  { name: "FAQ", href: "#faq" },
+  { name: "Contacto", href: "#contacto" },
 ];
 
-const Navbar: React.FC = () => {
-  const [open, setOpen] = useState(false);
-  const [darkSide, setDarkSide] = useState(false);
-
-  const toggleDarkMode = () => {
-    setDarkSide(!darkSide);
-  };
+export default function Navbar() {
+  const [menuState, setMenuState] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    if (darkSide) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [darkSide]);
-
-  const handleClickScroll = (section: string) => {
-    const element = document.getElementById(section);
-    if (element) {
-      // 👇 Will scroll smoothly to the top of the next section
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    if (open) {
-      setOpen(!open);
-    }
-  };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav
-      className={`w-full  fixed flex lg:flex-row flex-col items-center shadow-lg h-auto  justify-center bg-white dark:bg-[#0F0F0F] dark:text-white z-10  opacity-[0.95]`}
-      id="navbar"
-    >
-      <div className="flex items-center flex-shrink-0  mr-6 h-20 pl-6">
-        <a className="font-semibold text-4xl tracking-tight " href="">
-          Nodev
-        </a>
-        <div className="pl-36 block lg:hidden">
-          <button
-            onClick={() => setOpen(!open)}
-            className="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-gray-800 hover:border-gray-900 dark:hover:text-white dark:hover:border-white"
-          >
-            <svg
-              className="fill-current h-6 w-3"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title>Menu</title>
-              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-            </svg>
-          </button>
-        </div>
-        <div className="flex items-end justify-end lg:hidden ">
-          <DarkModeSwitch
-            style={{ marginLeft: '2rem' }}
-            checked={darkSide}
-            onChange={toggleDarkMode}
-            size={30}
-          />
-        </div>
-      </div>
-
-      <div
-        className={`${
-          open ? '' : 'hidden'
-        } w-full block flex-grow lg:flex lg:items-center lg:w-auto `}
+    <header>
+      <nav
+        data-state={menuState && "active"}
+        className="fixed group z-20 w-full px-2"
       >
-        <div className=" lg:p-0 lg:pt-1 lg- p-8 lg:flex w-full lg:flex-row  lg:justify-end  ">
-          {buttons.map((button) => (
-            <a
-              key={button.name}
-              className="block mt-4 lg:inline-block lg:mt-0  mr-4 text-xl px-10 hover:cursor-pointer"
-              onClick={() => handleClickScroll(button.ref)}
-            >
-              {button.name}
-            </a>
-          ))}
-        </div>
-      </div>
-      <div className="lg:flex items-center justify-center hidden ">
-        <DarkModeSwitch
-          style={{ marginRight: '1rem' }}
-          checked={darkSide}
-          onChange={toggleDarkMode}
-          size={30}
-        />
-      </div>
-    </nav>
-  );
-};
+        <div
+          className={cn(
+            "mx-auto mt-2 max-w-6xl rounded-2xl border border-transparent px-6 transition-all duration-300 lg:px-12",
+            isScrolled &&
+              "bg-black/70 max-w-4xl border-white/10 backdrop-blur-xl lg:px-5"
+          )}
+        >
+          <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
+            {/* Logo */}
+            <div className="flex w-full justify-between lg:w-auto">
+              <a href="#" className="flex items-center space-x-2">
+                <span className="text-2xl font-bold tracking-tight text-white">
+                  nodev
+                </span>
+                <span className="text-sm font-semibold text-blue-400 tracking-wider uppercase">
+                  ai
+                </span>
+              </a>
 
-export default Navbar;
+              <button
+                onClick={() => setMenuState(!menuState)}
+                aria-label={menuState ? "Cerrar menú" : "Abrir menú"}
+                className="relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5 lg:hidden"
+              >
+                <Menu
+                  className={cn(
+                    "m-auto size-6 duration-200",
+                    "group-data-[state=active]:rotate-180 group-data-[state=active]:scale-0 group-data-[state=active]:opacity-0"
+                  )}
+                />
+                <X
+                  className={cn(
+                    "absolute inset-0 m-auto size-6 -rotate-180 scale-0 opacity-0 duration-200",
+                    "group-data-[state=active]:rotate-0 group-data-[state=active]:scale-100 group-data-[state=active]:opacity-100"
+                  )}
+                />
+              </button>
+            </div>
+
+            {/* Desktop links - centered */}
+            <div className="absolute inset-0 m-auto hidden size-fit lg:block">
+              <ul className="flex gap-8 text-sm">
+                {menuItems.map((item) => (
+                  <li key={item.name}>
+                    <a
+                      href={item.href}
+                      className="text-white/70 hover:text-white block duration-150"
+                    >
+                      {item.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Mobile menu + CTA */}
+            <div
+              className={cn(
+                "bg-neutral-950 mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border border-white/10 p-6 shadow-2xl shadow-black/40 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none",
+                "group-data-[state=active]:block lg:group-data-[state=active]:flex"
+              )}
+            >
+              {/* Mobile links */}
+              <div className="lg:hidden">
+                <ul className="space-y-6 text-base">
+                  {menuItems.map((item) => (
+                    <li key={item.name}>
+                      <a
+                        href={item.href}
+                        onClick={() => setMenuState(false)}
+                        className="text-white/70 hover:text-white block duration-150"
+                      >
+                        {item.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
+                <a
+                  href="#contacto"
+                  className={cn(
+                    "inline-flex items-center justify-center rounded-xl border border-white/30 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/10",
+                    isScrolled && "lg:hidden"
+                  )}
+                >
+                  Contacto
+                </a>
+                <a
+                  href="#contacto"
+                  className={cn(
+                    "inline-flex items-center justify-center rounded-xl bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:bg-gray-200",
+                    isScrolled ? "lg:inline-flex" : "lg:inline-flex"
+                  )}
+                >
+                  Agendar Consulta
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+  );
+}

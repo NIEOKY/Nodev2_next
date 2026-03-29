@@ -1,14 +1,29 @@
-import Image from 'next/image';
-import { Inter } from '@next/font/google';
-import styles from './page.module.css';
-import Start from './components/Start';
-
-const inter = Inter({ subsets: ['latin'] });
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import LogoCloud from "./components/LogoCloud";
+import Problem from "./components/Problem";
+import HowItWorks from "./components/HowItWorks";
+import Services from "./components/Services";
+import CaseStudies from "./components/CaseStudies";
+import Testimonials from "./components/Testimonials";
+import FAQ from "./components/FAQ";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
-    <div className="bg-gray-100 dark:bg-gray-900 ">
-      <Start />
-    </div>
+    <main>
+      <Navbar />
+      <Hero />
+      <LogoCloud />
+      <Problem />
+      <HowItWorks />
+      <Services />
+      <CaseStudies />
+      <Testimonials />
+      <FAQ />
+      <Contact />
+      <Footer />
+    </main>
   );
 }

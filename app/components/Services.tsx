@@ -1,83 +1,111 @@
-import { useState } from 'react';
-import '../resources/images/PaginaWeb.png';
+"use client";
 
-import { Asap_Condensed } from '@next/font/google';
-const image1 = '../resources/images/PaginaWeb.png';
-const spaceData = [
+import { motion } from "framer-motion";
+import { Brain, Settings, Code, Lightbulb } from "lucide-react";
+
+const services = [
   {
-    name: 'Pagina web',
-    image: 'paginaweb.png',
-    content:
-      'Crea una presencia en línea para tu negocio con una página web moderna y profesional.',
+    icon: Brain,
+    title: "Integración de IA",
+    description:
+      "Chatbots inteligentes, procesamiento de lenguaje natural, visión por computadora y automatización cognitiva integrados en tus sistemas existentes.",
+    features: ["Chatbots & Asistentes", "Procesamiento de datos", "Modelos predictivos"],
   },
   {
-    name: 'Comercio electronico',
-    image: 'comercio.png',
-    content:
-      'Vende tus productos en línea con una tienda en línea atractiva y fácil de usar que aumentará tus ventas.',
+    icon: Settings,
+    title: "CRM & Automatización",
+    description:
+      "Conectamos tu CRM con pipelines inteligentes que califican leads, automatizan seguimientos y predicen cierres de ventas.",
+    features: ["Salesforce & HubSpot", "Pipelines inteligentes", "Lead scoring con IA"],
   },
   {
-    name: 'Aplicaciones moviles',
-    image: 'movileapp.png',
-    content:
-      'Haz crecer tu negocio y llega a más clientes con una aplicación móvil que les permita acceder a tus productos y servicios desde cualquier lugar.',
+    icon: Code,
+    title: "Desarrollo a medida",
+    description:
+      "Aplicaciones web, APIs y plataformas diseñadas específicamente para las necesidades únicas de tu negocio.",
+    features: ["Apps web & móviles", "APIs & integraciones", "Dashboards & analytics"],
   },
   {
-    name: 'Punto de ventas',
-    image: 'movileapp.png',
-    content:
-      'Gestiona y administra tu negocio de manera más eficiente con un sistema de punto de venta que te ayudará a aumentar tus ventas y a simplificar tus operaciones diarias.',
+    icon: Lightbulb,
+    title: "Consultoría estratégica",
+    description:
+      "Definimos tu roadmap de IA, capacitamos a tu equipo y establecemos gobernanza de datos para una adopción exitosa.",
+    features: ["Roadmap de IA", "Capacitación de equipos", "Gobierno de datos"],
   },
 ];
 
-const Services = () => {
-  const [activeSpace, setActiveSpace] = useState(spaceData[0].name);
-
-  const handleSpaceClick = (space: string) => {
-    setActiveSpace(space);
-  };
-
-  const activeSpaceData = spaceData.find((space) => space.name === activeSpace);
-
-  return (
-    <div
-      className="dark:bg-[#161616] bg-white p-4 flex flex-col items-center "
-      id="services"
-    >
-      <h1 className="text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white flex items-center justify-center mb-16 text-center">
-        NUESTROS SERVICIOS
-      </h1>
-      <div className="flex flex-wrap justify-center items-center">
-        <div className="w-full lg:w-1/4 lg:px-2 mb-8 lg:mb-0">
-          <ul className="space-y-6">
-            {spaceData.map((space) => (
-              <li
-                key={space.name}
-                className={`cursor-pointer py-4 px-6 rounded-lg ${
-                  activeSpace === space.name
-                    ? 'dark:bg-[rgba(44,44,44)] bg-[rgba(230,230,230)] text-black dark:text-white'
-                    : 'bg-white dark:bg-[rgba(22,22,22)] text-black dark:text-white'
-                } hover:bg-[rgba(240,240,240)] dark:hover:text-white transition-colors duration-300 dark:hover:bg-[#1e1e1e]`}
-                onClick={() => handleSpaceClick(space.name)}
-              >
-                <h2 className="font-bold text-2xl mb-2">{space.name}</h2>
-                <p className="text-base">{space.content}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="w-full lg:w-[60%] lg:px-12 flex justify-center items-center rounded-xl">
-          <div className="aspect-w-4 aspect-h-3 lg:aspect-w-16 lg:aspect-h-9 rounded-xl max-w-[800px] max-h-[600px] ">
-            <img
-              src={activeSpaceData?.image}
-              alt=""
-              className="rounded-xl shadow-2xl transform lg:hover:scale-110 transition-transform duration-300 "
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
 };
 
-export default Services;
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
+export default function Services() {
+  return (
+    <section className="bg-background py-24 md:py-32 border-t border-white/10" id="servicios">
+      <div className="mx-auto max-w-6xl px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <p className="text-sm font-medium uppercase tracking-widest text-blue-400 mb-4">
+            Servicios
+          </p>
+          <h2 className="text-3xl font-bold sm:text-4xl md:text-5xl tracking-tight">
+            Nuestros servicios
+          </h2>
+          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto text-lg">
+            Soluciones integrales de inteligencia artificial para cada etapa de
+            tu transformación digital.
+          </p>
+        </motion.div>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid gap-6 sm:grid-cols-2"
+        >
+          {services.map((service) => (
+            <motion.div
+              key={service.title}
+              variants={itemVariants}
+              className="group relative rounded-2xl border border-white/10 bg-white/[0.03] p-8 transition-all duration-300 hover:border-blue-500/30 hover:bg-white/[0.06] hover:-translate-y-1"
+            >
+              <div className="mb-6 inline-flex rounded-xl bg-gradient-to-br from-blue-500/10 to-violet-500/10 p-3">
+                <service.icon className="size-6 text-blue-400" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
+              <p className="text-muted-foreground mb-6 leading-relaxed">
+                {service.description}
+              </p>
+              <ul className="space-y-2">
+                {service.features.map((feature) => (
+                  <li
+                    key={feature}
+                    className="flex items-center text-sm text-muted-foreground"
+                  >
+                    <div className="mr-3 h-1.5 w-1.5 rounded-full bg-blue-400" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
